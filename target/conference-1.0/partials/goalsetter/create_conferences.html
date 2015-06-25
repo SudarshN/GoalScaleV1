@@ -1,0 +1,119 @@
+<div ng-controller="CreateGoalCtrl" >
+    <div class="row">
+        <div class="col-lg-12">
+            <div id="messages" class="alert alert-{{alertStatus}}" ng-show="messages">
+                <span ng-bind="messages"></span>
+                <i class="dismiss-messages pull-right glyphicon glyphicon-remove" ng-click="messages = ''"
+                   ng-show="messages"></i>
+            </div>
+            <img class="spinner" src="/img/ajax-loader.gif" ng-show="loading"/>
+        </div>
+    </div>
+    <button type="button" class="btn btn-primary pull-left" ng-click="doTheBack()">BACK</button>
+    <div class="row">
+        <div class="col-md-8">
+            <h3>Create a Goal</h3>
+ <ol class="breadcrumb">
+  <li><a href="#/goalsetter/home">Home</a></li>  
+   <li><a href="#">ShowClients</a></li> 
+    <li><a href="#">Client Detail</a></li> 
+     <li><class = "active">Create Goal</a></li> 
+</ol>
+            <form name="GoalForm" novalidate role="form">
+                <div class="form-group">
+                    <label for="name">Name of the Goal <span class="required">*</span></label>
+                    <span class="label label-danger"
+                        ng-show="GoalForm.name.$error.required">Required!</span>
+                    <input id="name" type="text" name="name" ng-model="Goal.name" class="form-control"
+                           ng-required="true"/>
+                </div>
+
+                          
+				 <div class="form-group">
+                    <label for="Clientname">Name of the Client</label>
+                    <input id="Clientname" type="text" name="Clientname" ng-model="Goal.Clientname"
+                              class="form-control"  ng-required="true"/>
+                </div>                
+
+                <div class="form-group">
+                    <label for="description">Description of the Goal</label>
+                    <textarea id="description" type="text" name="description" ng-model="Goal.description"
+                              class="form-control"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="minusonescale">-2 Goal Statement</label>
+                    <textarea id="minusonescale" type="text" name="minusonescale" ng-model="Goal.minusonescale"
+                              class="form-control"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="minustwoscale">-1 Goal Statement</label>
+                    <textarea id="minustwoscale" type="text" name="minustwoscale" ng-model="Goal.minustwoscale"
+                              class="form-control"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="Zeroscale">0 Goal Statement</label>
+                    <textarea id="Zeroscale" type="text" name="Zeroscale" ng-model="Goal.zeroscale"
+                              class="form-control"></textarea>
+                </div>
+                
+                 <div class="form-group">
+                    <label for="plustwoscale">+1 Goal Statement</label>
+                    <textarea id="plustwoscale" type="text" name="plustwoscale" ng-model="Goal.plustwoscale"
+                              class="form-control"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="plusonescale">+2 Goal Statement</label>
+                    <textarea id="plusonescale" type="text" name="plusonescale" ng-model="Goal.plusonescale"
+                              class="form-control"></textarea>
+                </div>
+
+                
+
+                <div class="form-group" ng-controller="DatepickerCtrl">
+                    <label for="startDate">Start Date</label>
+                    <p class="input-group">
+                        <input id="startDate" type="text" class="form-control" datepicker-popup="{{format}}"
+                               ng-model="Goal.startDate" is-open="opened"
+                               datepicker-options="dateOptions"
+                               close-text="Close"/>
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" ng-click="open($event)"><i
+                                class="glyphicon glyphicon-calendar"></i>
+                        </button>
+                    </span>
+                    </p>
+                </div>
+
+                <div class="form-group" ng-controller="DatepickerCtrl">
+                    <label for="endDate">End Date</label>
+                    <span class="label label-danger"
+                        ng-show="!isValidDates()">End Date must be later or equal to Start Date!</span>
+                    <p class="input-group">
+                        <input id="endDate" type="text" class="form-control" datepicker-popup="{{format}}"
+                               ng-model="Goal.endDate" is-open="opened"
+                               datepicker-options="dateOptions"
+                               close-text="Close"/>
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" ng-click="open($event)"><i
+                                class="glyphicon glyphicon-calendar"></i>
+                        </button>
+                    </span>
+                    </p>
+                </div>
+
+                
+
+                <button ng-click="createGoal(GoalForm)" class="btn btn-primary"
+                        >Create
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+       

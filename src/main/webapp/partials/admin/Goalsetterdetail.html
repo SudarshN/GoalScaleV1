@@ -1,0 +1,61 @@
+
+<div ng-controller="ShowGoalsettersCtrl">
+    <div class="row">
+        <div class="col-lg-12">
+            <div id="messages" class="alert alert-{{alertStatus}}" ng-show="messages">
+                <span ng-bind="messages"></span>
+                <i class="dismiss-messages pull-right glyphicon glyphicon-remove" ng-click="messages = ''"
+                   ng-show="messages"></i>
+            </div>
+            <img class="spinner" src="/img/ajax-loader.gif" ng-show="loading"/>
+        </div>
+    </div>
+    <button type="button" class="btn btn-primary pull-left" ng-click="doTheBack()">BACK</button>
+<div class="row">
+        <div class="col-lg-12">
+            <h3>Goalsetter Detail</h3>
+        </div>
+        
+         <ol class="breadcrumb">
+  <li><a href="#/admin/home">Home</a></li>
+  <li><a href="#">Goalsetters</a></li>
+   <li><class="active">GoalsetterDetail</a></li> 
+</ol>
+    </div>
+    
+    <tabset id="show-clients-tab" justified="true">
+        <tab select="getgoalsetter()" heading=""></tab>
+       
+       
+    </tabset>
+    <div class="well well-sm" >
+               
+               		<div>
+                    <h2>{{givengoalsettername}}</h2>
+					</div>
+                  
+                    <div>
+                        <label for="description">Goalsetter Description :- </label>
+                        <span id="description">{{givengoalsetterdescription}} </span>
+                    </div>
+                    <div>
+                        <label for="role">Goalsetter Role :- </label>
+                        <span id="role">{{givengoalsetterrole}} </span>
+                    </div>
+                    
+                                  
+     </div>
+    <div class="list-group">
+        <a href="#/createclient/{{goalsetterwebsafekey}}" class="list-group-item active">Create Client</a>
+        <a href="#/showclients/{{goalsetterwebsafekey}}" class="list-group-item">Show Client</a> 
+        <a href="#/updategoalsetter/{{goalsetterwebsafekey}}/Update" class="list-group-item">Update Goalsetter</a>
+        <a href = "" ng-click = "DeleteGoalsetter()" class="list-group-item">Delete Goalsetter</a>      
+
+    </div>
+    
+                    
+               
+ </div>
+        
+        
+

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!-- Bootstrap the angular app after the Google Java Script libraries are loaded. -->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-cosmo.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/offcanvas.css">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <meta property="og:title" content="Goal Scale">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="Goal Scale Application for Occupational therapy department">
+    <meta property="og:image" content="/img/CloudPlatform_logo.png">
+    <meta property="og:site_name" content="An web app powered by Google App Engine">
+    
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route.js"></script>
+    <script>
+        /**
+         * Initializes the Google API JavaScript client. Bootstrap the angular module after loading the Google libraries
+         * so that Google JavaScript library ready in the angular modules.
+         */
+         function init() {
+          gapi.client.load('goalscale', 'v1', null, '//' + window.location.host + '/_ah/api');
+		  gapi.client.load('oauth2', 'v2', function () {
+          					angular.bootstrap(document, ['conferenceApp']);
+          }); 
+        };
+    </script>
+    <script src="//apis.google.com/js/client:plusone.js?onload=init"></script>
+</head>
+
+
+<body ng-controller="RootCtrl" ng-init="initSignInButton()">
+  
+  
+     <ng-view></ng-view>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/jspdf.debug.js"></script>
+
+<script type="text/javascript" src="/js/jspdf.plugin.addimage.js"></script>
+<script type="text/javascript" src="/js/jspdf.plugin.png_support.js"></script>
+<script type="text/javascript" src="/js/png.js"></script>
+<script type="text/javascript" src="/js/jspdf.js"></script>
+<script src="/js/app.js"></script>
+<script src="/js/controllers.js"></script>
+<script src="js/jspdf.js"></script>
+
+<script src="js/html2canvas.js"></script>
+
+
+<script src="js/jspdf.plugin.from_html.js"></script>
+
+<script src="js/FileSaver.js"></script>
+
+<script src="js/jspdf.plugin.split_text_to_size.js"></script>
+
+<script src="js/jspdf.debug.js"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation" ng-show ="getSignedInState()" >
+    <div class="container">
+        <div class="navbar-header">
+            
+            <a class="navbar-brand" href="/">Goal Scale</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+                
+                <li id="signOutLink" ><a ng-click="signOut(); collapseNavbar()">Sign out</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

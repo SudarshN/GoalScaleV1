@@ -1,0 +1,86 @@
+
+<div ng-controller="GoalDetailCtrl">
+    <div class="row">
+        <div class="col-lg-12">
+            <div id="messages" class="alert alert-{{alertStatus}}" ng-show="messages">
+                <span ng-bind="messages"></span>
+                <i class="dismiss-messages pull-right glyphicon glyphicon-remove" ng-click="messages = ''"
+                   ng-show="messages"></i>
+            </div>
+            <img class="spinner" src="/img/ajax-loader.gif" ng-show="loading"/>
+        </div>
+    </div>
+<div class="row">
+        <div class="col-lg-12">
+            <h3>Goal Detail</h3>
+        </div>
+   <button type="button" class="btn btn-primary pull-left" ng-click="doTheBack()">BACK</button>      
+        <ol class="breadcrumb">
+  <li><a href="#/goalsetter/home">Home</a></li>
+  <li><a href="#">Goalsetters</a></li>
+   <li><a href="#">ShowClient</a></li>
+  <li <a href="#">ClientDetail</a></li>
+  <li< a href="#">Show Goal</a></li>
+  <li<a class = "active">Goal Detail</a></li>
+</ol>
+    </div>
+    
+    <tabset id="show-clients-tab" justified="true">
+        <tab select="goaldetail()" heading=""></tab>
+       
+       
+    </tabset>
+    <div class="well well-sm" >
+               
+               		<div>
+                    <h2>{{goalname}}</h2>
+					</div>
+                  
+                    <div>
+                        <label for="description">Goal Description :- </label>
+                        <span id="description">{{goaldescription}} </span>
+                    </div>
+                    <div>
+                        <label for="role"> MinusTwo GoalStatement :- </label>
+                        <span id="role">{{minustwogoalstatement}} </span>
+                    </div>
+                     <div>
+                        <label for="role"> MinusOne GoalStatement :- </label>
+                        <span id="role">{{minusonegoalstatement}} </span>
+                    </div>
+                     <div>
+                        <label for="role"> Zero GoalStatement :- </label>
+                        <span id="role">{{zerogoalstatement}} </span>
+                    </div>
+                     <div>
+                        <label for="role"> PlusOne GoalStatement :- </label>
+                        <span id="role">{{plusonegoalstatement}} </span>
+                    </div>
+                     <div>
+                        <label for="role"> PlusTwo GoalStatement  :- </label>
+                        <span id="role">{{plustwogoalstatement}} </span>
+                    </div>
+                     <div>
+                        <label for="role">Goal StartDate :- </label>
+                        <span id="role">{{startdate}} </span>
+                    </div>
+                    <div>
+                        <label for="role">Goal End Date :- </label>
+                        <span id="role">{{enddate}} </span>
+                    </div>
+                    
+                                  
+     </div>
+    <div class="list-group">
+        <a href="#/goalsetter/goal/detail/{{goalkey}}/Evaluations" class="list-group-item active">List Of Evaluations</a>
+        <a href="#/goalsetter/goal/detail/{{goalkey}}/Evaluate" class="list-group-item">Evaluate Goal</a> 
+               
+
+    </div>
+    
+                    
+               
+ </div>
+        
+        
+

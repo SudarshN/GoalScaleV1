@@ -1,0 +1,69 @@
+
+<div ng-controller="ShowClientCtrl">
+    <div class="row">
+        <div class="col-lg-12">
+            <div id="messages" class="alert alert-{{alertStatus}}" ng-show="messages">
+                <span ng-bind="messages"></span>
+                <i class="dismiss-messages pull-right glyphicon glyphicon-remove" ng-click="messages = ''"
+                   ng-show="messages"></i>
+            </div>
+            <img class="spinner" src="/img/ajax-loader.gif" ng-show="loading"/>
+        </div>
+    </div>
+    <button type="button" class="btn btn-primary pull-left" ng-click="doTheBack()">BACK</button>
+<div class="row">
+        <div class="col-lg-12">
+            <h3>Client Detail</h3>
+        </div>
+        
+        <ol class="breadcrumb">
+  <li><a href="#/admin/home">Home</a></li>
+  <li><a href="#">Goalsetters</a></li>
+   <li><a href="#">ShowClient</a></li>
+  <li ><class="active">ClientDetail</li>
+</ol>
+    </div>
+    
+    <tabset id="show-clients-tab" justified="true">
+        <tab select="getclient()" heading=""></tab>
+       
+       
+    </tabset>
+    <div class="well well-sm" >
+               
+               		<div>
+                    <h2>{{givenclientname}}</h2>
+					</div>
+                  
+                    <div>
+                        <label for="description">Client Description :- </label>
+                        <span id="description">{{givenclientdescription}} </span>
+                    </div>
+                    <div>
+                        <label for="role">Client Location :- </label>
+                        <span id="role">{{givenclientlocation}} </span>
+                    </div>
+                     <div>
+                        <label for="role">Client Medical Record Number :- </label>
+                        <span id="role">{{givenclientmedicalrecordnumber}} </span>
+                    </div>
+                    <div>
+                        <label for="role">Client Age :- </label>
+                        <span id="role">{{givenclientage}} </span>
+                    </div>
+                    
+                                  
+     </div>
+    <div class="list-group">
+        <a href="#/goalsetter/createGoal/{{clientwebsafekey}}" class="list-group-item active">Create Goal</a>
+        <a href="#/goalsetter/showgoals/{{clientwebsafekey}}" class="list-group-item">Show Goals</a>  
+           
+
+    </div>
+    
+                    
+               
+ </div>
+        
+        
+

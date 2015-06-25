@@ -1,0 +1,77 @@
+
+<div ng-controller="ShowClientforGoalsetterCtrl">
+    <div class="row">
+        <div class="col-lg-12">
+            <div id="messages" class="alert alert-{{alertStatus}}" ng-show="messages">
+                <span ng-bind="messages"></span>
+                <i class="dismiss-messages pull-right glyphicon glyphicon-remove" ng-click="messages = ''"
+                   ng-show="messages"></i>
+            </div>
+            <img class="spinner" src="/img/ajax-loader.gif" ng-show="loading"/>
+        </div>
+    </div>
+   <button type="button" class="btn btn-primary pull-left" ng-click="doTheBack()">BACK</button>
+     <div class="row">
+        <div class="col-lg-12">
+            <h3>Show Clients</h3>
+             <ol class="breadcrumb">
+  <li><a href="#/goalsetter/home">Home</a></li>  
+   <li><class="active">ShowClient</li>
+  
+</ol>
+        </div>
+    </div>
+    
+    <tabset id="show-clients-tab" justified="true">
+        <tab select="tabAllSelected()" heading="Welcome {{goalsettername}}"></tab>
+       
+       
+    </tabset>
+    
+    <div class="row row-offcanvas row-offcanvas-right" ng-class="{active: isOffcanvasEnabled}">
+        <div class="col-xs-12 col-sm-8">
+        
+         <button ng-click="queryClients();" class="btn btn-primary">
+                <i class="glyphicon glyphicon-search"></i> Search
+            </button>
+            
+             <p class="pull-right visible-xs">
+                <button ng-hide="selectedTab != 'ALL'" type="button" class="btn btn-primary btn-sm" data-toggle="offcanvas"
+                        ng-click="isOffcanvasEnabled = !isOffcanvasEnabled">
+                    <i class="glyphicon glyphicon-chevron-left" ng-show="isOffcanvasEnabled"></i>
+                    <span ng-show="isOffcanvasEnabled">Hide</span>
+                    <span ng-hide="isOffcanvasEnabled">Show</span>
+                    filters
+                    <i class="glyphicon glyphicon-chevron-right" ng-hide="isOffcanvasEnabled"></i>
+                </button>
+            </p>
+            
+             <div ng-show="submitted && Client.length == 0">
+                <h4>No matching results.</h4>
+            </div>
+  <div class="row">
+        <div class="col-md-8">
+            <div id="custom-search-input">
+                <div class="input-group col-md-7">
+                    <input type="text" ng-model = "searchname" class="form-control input-lg"  />
+                    <span class="input-group-btn">
+                        <button  ng-click="queryclients(searchname);" class="btn btn-info btn-lg" type="button">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                       <span> <button  ng-click="tabAllSelected();" class="btn btn-info btn-lg" type="button">
+                            Clear Search
+                        </button></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+	
+</div>          
+            <div class="list-group" ng-repeat="Client in clients">
+        <a href="#/goalsetter/clientdetail/{{Client.websafeKey}}" class="list-group-item active">{{Client.id}}</a>
+       
+
+    </div>
+            
+</div>
+      

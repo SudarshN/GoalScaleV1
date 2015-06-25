@@ -1,0 +1,50 @@
+<div ng-controller="updateGoalsetterCtrl" ng-init="init()">
+    <div class="row">
+        <div class="col-lg-12">
+            <div id="messages" class="alert alert-{{alertStatus}}" ng-show="messages">
+                <span ng-bind="messages"></span>
+                <i class="dismiss-messages pull-right glyphicon glyphicon-remove" ng-click="messages = ''"
+                   ng-show="messages"></i>
+            </div>
+            <img class="spinner" src="/img/ajax-loader.gif" ng-show="loading"/>
+        </div>
+    </div>
+    <button type="button" class="btn btn-primary pull-left" ng-click="doTheBack()">BACK</button>
+    <div class="row">
+        <div class="col-md-8">
+            <h3>Update Goalsetter</h3>
+            <form name="goalsetterForm" novalidate role="form">
+                <div class="form-group" ng-class="{'has-warning': goalsetter.name != initialGoalsetter.name}">
+                    <label for="Goalsettername">Goalsetter Name </label>
+                    <span class="label label-warning"
+                          ng-show="goalsetter.name != initialGoalsetter.displayName"> Changed</span>
+                    <input id="displayName" type="text" name="displayName" ng-model="goalsetter.name"
+                           class="form-control"/>
+                          
+                            <label for="Role">Role </label>
+                    
+                    <input id="role" type="text" name="role" ng-model="goalsetter.role"
+                           class="form-control" ng-options="role for role in roles"/>
+                           
+                            <label for="description">Description </label>
+                    
+                    <input id="description" type="text" name="role" ng-model="goalsetter.description"
+                           class="form-control"/>
+                           
+                             <label for="description">E-mail address </label>
+                    
+                    <input id="email" type="text" name="email" ng-model="goalsetter.emailaddress"
+                           class="form-control"/>
+                </div>
+
+                
+
+                <button ng-click="saveGoalsetter(goalsetterForm)" class="btn btn-primary"
+                        ng-disabled="loading">Update Goalsetter
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+ 

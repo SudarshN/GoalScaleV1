@@ -1,0 +1,1073 @@
+{
+ "kind": "discovery#rpcDescription",
+ "etag": "\"u_zXkMELIlX4ktyNbM2XKD4vK8E/E3PqseNSlznURKHudt8pCH5-E5U\"",
+ "discoveryVersion": "v1",
+ "id": "goalscale:v1",
+ "name": "goalscale",
+ "version": "v1",
+ "description": "API for the Goal Scale Backend application.",
+ "icons": {
+  "x16": "http://www.google.com/images/icons/product/search-16.gif",
+  "x32": "http://www.google.com/images/icons/product/search-32.gif"
+ },
+ "protocol": "rpc",
+ "rootUrl": "https://mynewproject-1234.appspot.com/_ah/api/",
+ "rpcUrl": "https://mynewproject-1234.appspot.com/_ah/api/rpc",
+ "rpcPath": "/_ah/api/rpc",
+ "parameters": {
+  "alt": {
+   "type": "string",
+   "description": "Data format for the response.",
+   "default": "json",
+   "enum": [
+    "json"
+   ],
+   "enumDescriptions": [
+    "Responses with Content-Type of application/json"
+   ],
+   "location": "query"
+  },
+  "fields": {
+   "type": "string",
+   "description": "Selector specifying which fields to include in a partial response.",
+   "location": "query"
+  },
+  "key": {
+   "type": "string",
+   "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+   "location": "query"
+  },
+  "oauth_token": {
+   "type": "string",
+   "description": "OAuth 2.0 token for the current user.",
+   "location": "query"
+  },
+  "prettyPrint": {
+   "type": "boolean",
+   "description": "Returns response with indentations and line breaks.",
+   "default": "true",
+   "location": "query"
+  },
+  "quotaUser": {
+   "type": "string",
+   "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters. Overrides userIp if both are provided.",
+   "location": "query"
+  },
+  "userIp": {
+   "type": "string",
+   "description": "IP address of the site where the request originates. Use this if you want to enforce per-user limits.",
+   "location": "query"
+  }
+ },
+ "auth": {
+  "oauth2": {
+   "scopes": {
+    "https://www.googleapis.com/auth/userinfo.email": {
+     "description": "View your email address"
+    }
+   }
+  }
+ },
+ "schemas": {
+  "Announcement": {
+   "id": "Announcement",
+   "type": "object",
+   "properties": {
+    "message": {
+     "type": "string"
+    }
+   }
+  },
+  "Client": {
+   "id": "Client",
+   "type": "object",
+   "properties": {
+    "age": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "description": {
+     "type": "string"
+    },
+    "displayName": {
+     "type": "string"
+    },
+    "goals": {
+     "type": "array",
+     "items": {
+      "$ref": "Goal"
+     }
+    },
+    "goalsetterid": {
+     "type": "string"
+    },
+    "id": {
+     "type": "string"
+    },
+    "location": {
+     "type": "string"
+    },
+    "medicalRecordNumber": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "name": {
+     "type": "string"
+    },
+    "organizerDisplayName": {
+     "type": "string"
+    },
+    "websafeKey": {
+     "type": "string"
+    }
+   }
+  },
+  "ClientCollection": {
+   "id": "ClientCollection",
+   "type": "object",
+   "properties": {
+    "items": {
+     "type": "array",
+     "items": {
+      "$ref": "Client"
+     }
+    }
+   }
+  },
+  "ClientForm": {
+   "id": "ClientForm",
+   "type": "object",
+   "properties": {
+    "age": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "description": {
+     "type": "string"
+    },
+    "location": {
+     "type": "string"
+    },
+    "medicalRecordNumber": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "name": {
+     "type": "string"
+    }
+   }
+  },
+  "ConferenceQueryForm": {
+   "id": "ConferenceQueryForm",
+   "type": "object",
+   "properties": {
+    "filters": {
+     "type": "array",
+     "items": {
+      "$ref": "Filter"
+     }
+    }
+   }
+  },
+  "Evaluate": {
+   "id": "Evaluate",
+   "type": "object",
+   "properties": {
+    "goalwebsafekey": {
+     "type": "string"
+    },
+    "id": {
+     "type": "string"
+    },
+    "score": {
+     "type": "number",
+     "format": "double"
+    },
+    "websafeKey": {
+     "type": "string"
+    }
+   }
+  },
+  "EvaluateCollection": {
+   "id": "EvaluateCollection",
+   "type": "object",
+   "properties": {
+    "items": {
+     "type": "array",
+     "items": {
+      "$ref": "Evaluate"
+     }
+    }
+   }
+  },
+  "EvaluationForm": {
+   "id": "EvaluationForm",
+   "type": "object",
+   "properties": {
+    "EvaluationDate": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "Notes": {
+     "type": "string"
+    },
+    "evaluationDate": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "sNotes": {
+     "type": "string"
+    },
+    "score": {
+     "type": "number",
+     "format": "double"
+    }
+   }
+  },
+  "Field": {
+   "id": "Field",
+   "type": "string",
+   "enum": [
+    "CITY",
+    "MAX_ATTENDEES",
+    "MONTH",
+    "TOPIC"
+   ],
+   "enumDescriptions": [
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  "Filter": {
+   "id": "Filter",
+   "type": "object",
+   "properties": {
+    "field": {
+     "$ref": "Field"
+    },
+    "operator": {
+     "$ref": "Operator"
+    },
+    "value": {
+     "type": "string"
+    }
+   }
+  },
+  "Goal": {
+   "id": "Goal",
+   "type": "object",
+   "properties": {
+    "clientname": {
+     "type": "string"
+    },
+    "description": {
+     "type": "string"
+    },
+    "endDate": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "id": {
+     "type": "string",
+     "format": "int64"
+    },
+    "listofevaluations": {
+     "type": "array",
+     "items": {
+      "$ref": "Evaluate"
+     }
+    },
+    "minusonescale": {
+     "type": "string"
+    },
+    "minustwoscale": {
+     "type": "string"
+    },
+    "name": {
+     "type": "string"
+    },
+    "plusonescale": {
+     "type": "string"
+    },
+    "plustwoscale": {
+     "type": "string"
+    },
+    "startDate": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "websafeKey": {
+     "type": "string"
+    },
+    "zeroscale": {
+     "type": "string"
+    }
+   }
+  },
+  "GoalCollection": {
+   "id": "GoalCollection",
+   "type": "object",
+   "properties": {
+    "items": {
+     "type": "array",
+     "items": {
+      "$ref": "Goal"
+     }
+    }
+   }
+  },
+  "GoalForm": {
+   "id": "GoalForm",
+   "type": "object",
+   "properties": {
+    "clientname": {
+     "type": "string"
+    },
+    "description": {
+     "type": "string"
+    },
+    "endDate": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "minusonescale": {
+     "type": "string"
+    },
+    "minustwoscale": {
+     "type": "string"
+    },
+    "name": {
+     "type": "string"
+    },
+    "plusonescale": {
+     "type": "string"
+    },
+    "plustwoscale": {
+     "type": "string"
+    },
+    "startDate": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "zeroscale": {
+     "type": "string"
+    }
+   }
+  },
+  "Goalsetter": {
+   "id": "Goalsetter",
+   "type": "object",
+   "properties": {
+    "averagescore": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "clients": {
+     "type": "array",
+     "items": {
+      "$ref": "Client"
+     }
+    },
+    "description": {
+     "type": "string"
+    },
+    "displayName": {
+     "type": "string"
+    },
+    "emailaddress": {
+     "type": "string"
+    },
+    "id": {
+     "type": "string"
+    },
+    "name": {
+     "type": "string"
+    },
+    "organizerDisplayName": {
+     "type": "string"
+    },
+    "role": {
+     "$ref": "ROLE"
+    },
+    "scores": {
+     "type": "array",
+     "items": {
+      "type": "integer",
+      "format": "int32"
+     }
+    },
+    "websafeKey": {
+     "type": "string"
+    }
+   }
+  },
+  "GoalsetterCollection": {
+   "id": "GoalsetterCollection",
+   "type": "object",
+   "properties": {
+    "items": {
+     "type": "array",
+     "items": {
+      "$ref": "Goalsetter"
+     }
+    }
+   }
+  },
+  "GoalsetterForm": {
+   "id": "GoalsetterForm",
+   "type": "object",
+   "properties": {
+    "clients": {
+     "type": "array",
+     "items": {
+      "$ref": "Client"
+     }
+    },
+    "description": {
+     "type": "string"
+    },
+    "emailaddress": {
+     "type": "string"
+    },
+    "name": {
+     "type": "string"
+    },
+    "role": {
+     "$ref": "ROLE"
+    }
+   }
+  },
+  "Operator": {
+   "id": "Operator",
+   "type": "string",
+   "enum": [
+    "EQ",
+    "GT",
+    "GTEQ",
+    "LT",
+    "LTEQ",
+    "NE"
+   ],
+   "enumDescriptions": [
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  "Profile": {
+   "id": "Profile",
+   "type": "object",
+   "properties": {
+    "displayName": {
+     "type": "string"
+    },
+    "mainEmail": {
+     "type": "string"
+    },
+    "userId": {
+     "type": "string"
+    }
+   }
+  },
+  "ProfileForm": {
+   "id": "ProfileForm",
+   "type": "object",
+   "properties": {
+    "displayName": {
+     "type": "string"
+    },
+    "teeShirtSize": {
+     "$ref": "TeeShirtSize"
+    }
+   }
+  },
+  "ROLE": {
+   "id": "ROLE",
+   "type": "string",
+   "enum": [
+    "ADMIN",
+    "GOALSETTER"
+   ],
+   "enumDescriptions": [
+    "",
+    ""
+   ]
+  },
+  "TeeShirtSize": {
+   "id": "TeeShirtSize",
+   "type": "string",
+   "enum": [
+    "L",
+    "M",
+    "NOT_SPECIFIED",
+    "S",
+    "XL",
+    "XS",
+    "XXL",
+    "XXXL"
+   ],
+   "enumDescriptions": [
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  }
+ },
+ "methods": {
+  "goalscale.checkforregisteredusers": {
+   "id": "goalscale.checkforregisteredusers",
+   "parameters": {
+    "emailaddress": {
+     "type": "string",
+     "required": true
+    }
+   },
+   "parameterOrder": [
+    "emailaddress"
+   ],
+   "returns": {
+    "$ref": "Goalsetter"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "goalscale.createGoal": {
+   "id": "goalscale.createGoal",
+   "parameters": {
+    "clientwebsafekey": {
+     "type": "string",
+     "required": true
+    },
+    "resource": {
+     "$ref": "GoalForm"
+    }
+   },
+   "parameterOrder": [
+    "resource",
+    "clientwebsafekey"
+   ],
+   "returns": {
+    "$ref": "Goal"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "goalscale.createGoalsetter": {
+   "id": "goalscale.createGoalsetter",
+   "parameters": {
+    "resource": {
+     "$ref": "GoalsetterForm"
+    }
+   },
+   "parameterOrder": [
+    "resource"
+   ],
+   "returns": {
+    "$ref": "Goalsetter"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "goalscale.createReport": {
+   "id": "goalscale.createReport",
+   "parameters": {
+    "resource": {
+     "$ref": "EvaluationForm"
+    },
+    "websafeConferenceKey": {
+     "type": "string",
+     "required": true
+    }
+   },
+   "parameterOrder": [
+    "resource",
+    "websafeConferenceKey"
+   ],
+   "returns": {
+    "$ref": "Evaluate"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "goalscale.createUser": {
+   "id": "goalscale.createUser",
+   "parameters": {
+    "goalsetterwebsafekey": {
+     "type": "string",
+     "required": true
+    },
+    "resource": {
+     "$ref": "ClientForm"
+    }
+   },
+   "parameterOrder": [
+    "resource",
+    "goalsetterwebsafekey"
+   ],
+   "returns": {
+    "$ref": "Client"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "goalscale.createUserforGoalsetter": {
+   "id": "goalscale.createUserforGoalsetter",
+   "parameters": {
+    "resource": {
+     "$ref": "ClientForm"
+    }
+   },
+   "parameterOrder": [
+    "resource"
+   ],
+   "returns": {
+    "$ref": "Client"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "goalscale.deleteclient": {
+   "id": "goalscale.deleteclient",
+   "parameters": {
+    "clientwebsafekey": {
+     "type": "string",
+     "required": true
+    }
+   },
+   "parameterOrder": [
+    "clientwebsafekey"
+   ],
+   "returns": {
+    "$ref": "Client"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "goalscale.deletegoal": {
+   "id": "goalscale.deletegoal",
+   "parameters": {
+    "goalkey": {
+     "type": "string",
+     "required": true
+    }
+   },
+   "parameterOrder": [
+    "goalkey"
+   ],
+   "returns": {
+    "$ref": "Goal"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "goalscale.deletegoalsetter": {
+   "id": "goalscale.deletegoalsetter",
+   "parameters": {
+    "websafegaolsetterKey": {
+     "type": "string",
+     "required": true
+    }
+   },
+   "parameterOrder": [
+    "websafegaolsetterKey"
+   ],
+   "returns": {
+    "$ref": "Goalsetter"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "goalscale.getAnnouncement": {
+   "id": "goalscale.getAnnouncement",
+   "allowGet": true,
+   "returns": {
+    "$ref": "Announcement"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "goalscale.getClientsfromGoalsetter": {
+   "id": "goalscale.getClientsfromGoalsetter",
+   "allowGet": true,
+   "parameters": {
+    "goalsetterwebsafekey": {
+     "type": "string",
+     "required": true
+    }
+   },
+   "parameterOrder": [
+    "goalsetterwebsafekey"
+   ],
+   "returns": {
+    "$ref": "ClientCollection"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "goalscale.getConferencesCreated": {
+   "id": "goalscale.getConferencesCreated",
+   "returns": {
+    "$ref": "GoalCollection"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "goalscale.getGoalEvaluate": {
+   "id": "goalscale.getGoalEvaluate",
+   "allowGet": true,
+   "parameters": {
+    "websafeConferenceKey": {
+     "type": "string",
+     "required": true
+    }
+   },
+   "parameterOrder": [
+    "websafeConferenceKey"
+   ],
+   "returns": {
+    "$ref": "EvaluateCollection"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "goalscale.getProfile": {
+   "id": "goalscale.getProfile",
+   "allowGet": true,
+   "returns": {
+    "$ref": "Profile"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "goalscale.getallClientsforGoalsetter": {
+   "id": "goalscale.getallClientsforGoalsetter",
+   "returns": {
+    "$ref": "ClientCollection"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "goalscale.getclient": {
+   "id": "goalscale.getclient",
+   "allowGet": true,
+   "parameters": {
+    "clientwebsafekey": {
+     "type": "string",
+     "required": true
+    }
+   },
+   "parameterOrder": [
+    "clientwebsafekey"
+   ],
+   "returns": {
+    "$ref": "Client"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "goalscale.getgoal": {
+   "id": "goalscale.getgoal",
+   "allowGet": true,
+   "parameters": {
+    "goalkey": {
+     "type": "string",
+     "required": true
+    }
+   },
+   "parameterOrder": [
+    "goalkey"
+   ],
+   "returns": {
+    "$ref": "Goal"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "goalscale.getgoalsetter": {
+   "id": "goalscale.getgoalsetter",
+   "allowGet": true,
+   "parameters": {
+    "websafegaolsetterKey": {
+     "type": "string",
+     "required": true
+    }
+   },
+   "parameterOrder": [
+    "websafegaolsetterKey"
+   ],
+   "returns": {
+    "$ref": "Goalsetter"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "goalscale.getgoalsfromclients": {
+   "id": "goalscale.getgoalsfromclients",
+   "allowGet": true,
+   "parameters": {
+    "clientwebsafekey": {
+     "type": "string",
+     "required": true
+    }
+   },
+   "parameterOrder": [
+    "clientwebsafekey"
+   ],
+   "returns": {
+    "$ref": "GoalCollection"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "goalscale.goalscaleAPI.getallClients": {
+   "id": "goalscale.goalscaleAPI.getallClients",
+   "allowGet": true,
+   "returns": {
+    "$ref": "ClientCollection"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "goalscale.goalscaleAPI.queryforallClients": {
+   "id": "goalscale.goalscaleAPI.queryforallClients",
+   "returns": {
+    "$ref": "ClientCollection"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "goalscale.goalscaleAPI.queryforallgoalsetters": {
+   "id": "goalscale.goalscaleAPI.queryforallgoalsetters",
+   "returns": {
+    "$ref": "GoalsetterCollection"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "goalscale.queryClients": {
+   "id": "goalscale.queryClients",
+   "parameters": {
+    "resource": {
+     "$ref": "ConferenceQueryForm"
+    }
+   },
+   "parameterOrder": [
+    "resource"
+   ],
+   "returns": {
+    "$ref": "ClientCollection"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "goalscale.queryConferences_nofilters": {
+   "id": "goalscale.queryConferences_nofilters",
+   "returns": {
+    "$ref": "ClientCollection"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "goalscale.queryGoals_nofilters": {
+   "id": "goalscale.queryGoals_nofilters",
+   "returns": {
+    "$ref": "GoalCollection"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "goalscale.queryGoalsetters_nofilters": {
+   "id": "goalscale.queryGoalsetters_nofilters",
+   "returns": {
+    "$ref": "GoalsetterCollection"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "goalscale.queryreports_nofilters": {
+   "id": "goalscale.queryreports_nofilters",
+   "returns": {
+    "$ref": "EvaluateCollection"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "goalscale.saveClient": {
+   "id": "goalscale.saveClient",
+   "allowGet": true,
+   "parameters": {
+    "clientwebsafekey": {
+     "type": "string",
+     "required": true
+    },
+    "resource": {
+     "$ref": "ClientForm"
+    }
+   },
+   "parameterOrder": [
+    "resource",
+    "clientwebsafekey"
+   ],
+   "returns": {
+    "$ref": "Client"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "goalscale.saveGoal": {
+   "id": "goalscale.saveGoal",
+   "allowGet": true,
+   "parameters": {
+    "goalkey": {
+     "type": "string",
+     "required": true
+    },
+    "resource": {
+     "$ref": "GoalForm"
+    }
+   },
+   "parameterOrder": [
+    "resource",
+    "goalkey"
+   ],
+   "returns": {
+    "$ref": "Goal"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "goalscale.saveGoalsetter": {
+   "id": "goalscale.saveGoalsetter",
+   "allowGet": true,
+   "parameters": {
+    "resource": {
+     "$ref": "GoalsetterForm"
+    },
+    "websafegaolsetterKey": {
+     "type": "string",
+     "required": true
+    }
+   },
+   "parameterOrder": [
+    "resource",
+    "websafegaolsetterKey"
+   ],
+   "returns": {
+    "$ref": "Goalsetter"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "goalscale.saveProfile": {
+   "id": "goalscale.saveProfile",
+   "parameters": {
+    "resource": {
+     "$ref": "ProfileForm"
+    }
+   },
+   "parameterOrder": [
+    "resource"
+   ],
+   "returns": {
+    "$ref": "Profile"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "goalscale.searchclient": {
+   "id": "goalscale.searchclient",
+   "parameters": {
+    "searchname": {
+     "type": "string",
+     "required": true
+    }
+   },
+   "parameterOrder": [
+    "searchname"
+   ],
+   "returns": {
+    "$ref": "ClientCollection"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "goalscale.searchgoal": {
+   "id": "goalscale.searchgoal",
+   "parameters": {
+    "searchname": {
+     "type": "string",
+     "required": true
+    }
+   },
+   "parameterOrder": [
+    "searchname"
+   ],
+   "returns": {
+    "$ref": "GoalCollection"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "goalscale.searchgoalsetter": {
+   "id": "goalscale.searchgoalsetter",
+   "parameters": {
+    "searchname": {
+     "type": "string",
+     "required": true
+    }
+   },
+   "parameterOrder": [
+    "searchname"
+   ],
+   "returns": {
+    "$ref": "GoalsetterCollection"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  }
+ }
+}

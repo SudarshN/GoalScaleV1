@@ -1,0 +1,65 @@
+<div ng-controller="GoalDetailCtrl">
+    <div class="row">
+        <div class="col-lg-12">
+            <div id="messages" class="alert alert-{{alertStatus}}" ng-show="messages">
+                <span ng-bind="messages"></span>
+                <i class="dismiss-messages pull-right glyphicon glyphicon-remove" ng-click="messages = ''"
+                   ng-show="messages"></i>
+            </div>
+            <img class="spinner" src="/img/ajax-loader.gif" ng-show="loading"/>
+        </div>
+    </div>
+<button type="button" class="btn btn-primary pull-left" ng-click="doTheBack()">BACK</button>
+<div class="row">
+        <div class="col-lg-12">
+            <h3>List Of Evaluations </h3>
+        </div>
+        
+               <ol class="breadcrumb">
+  <li><a href="#/goalsetter/home">Home</a></li> 
+   <li><a href="#">ShowClient</a></li>
+  <li> <a href="#">ClientDetail</a></li>
+  <li> <a href="#">Show Goal</a></li>
+  <li> <a href="#">Goal Detail</a></li>
+  <li> <class = "active">List Of Evaluations</li>
+</ol>
+</ol>
+    </div>
+    <div class="row" ng-init="init()">
+        <div class="col-md-9">
+            <div class="well well-sm">
+                <div ng-repeat="Evaluate in evalautes">
+                    <h2>{{Evaluate.name}}</h2>
+
+
+                    <div>
+                        <label for="organizer">Name of the Goal :-</label>
+                        <span id="organizer">{{Evaluate.id}}</span>
+                    </div>
+
+                    <div>
+                        <label for="registered">Comments on Evaluation :- </label>
+                        <span id="registered">{{Evaluate.notes}} </span>
+                    </div>
+
+
+                    <div>
+                        <label for="score">Evaluation Score :- </label>
+                        <span id="score">{{Evaluate.score}} </span>
+                    </div>
+                    <div>
+                        <label for="startDate">Evaluation Date: </label>
+                        <span id="startDate">{{Evaluate.Evaluationdate | date:'dd-MMMM-yyyy'}}</span>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <form class="form" novalidate role="form">
+               
+            </form>
+        </div>
+    </div>
+</div>
+

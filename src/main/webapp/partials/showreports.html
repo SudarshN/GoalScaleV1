@@ -1,0 +1,135 @@
+<div ng-controller="ShowReportCtrl">
+    <div class="row">
+        <div class="col-lg-12">
+            <div id="messages" class="alert alert-{{alertStatus}}" ng-show="messages">
+                <span ng-bind="messages"></span>
+                <i class="dismiss-messages pull-right glyphicon glyphicon-remove" ng-click="messages = ''"
+                   ng-show="messages"></i>
+            </div>
+            <img class="spinner" src="/img/ajax-loader.gif" ng-show="loading"/>
+        </div>
+    </div>
+   
+<button type="button" class="btn btn-primary pull-left" ng-click="doTheBack()">BACK</button>
+     <div class="row">
+        <div class="col-lg-12">
+            <h3>Show Reports</h3>
+        </div>
+        
+         <ol class="breadcrumb">
+  <li><a href="#/admin/home">Home</a></li>
+  <li><class="active">Reports</a></li>  
+</ol>
+    </div>
+    <button ng-class="{ active: isActive('/viewreports')}" id="viewreports"  class="btn btn-primary pull-left" ng-click=""><a href="#/viewreports" >View All Report</a></button>
+    <tabset id="show-reports-tab" justified="true">
+        <tab select="tabAllSelected()" heading="All Reports"></tab>
+       
+       
+    </tabset>
+     
+    <div class="row row-offcanvas row-offcanvas-right" ng-class="{active: isOffcanvasEnabled}">
+        <div class="col-xs-12 col-sm-8">
+        
+         <button ng-click="queryReports();" class="btn btn-primary">
+                <i class="glyphicon glyphicon-search"></i> Search
+            </button>
+            
+             <p class="pull-right visible-xs">
+                <button ng-hide="selectedTab != 'ALL'" type="button" class="btn btn-primary btn-sm" data-toggle="offcanvas"
+                        ng-click="isOffcanvasEnabled = !isOffcanvasEnabled">
+                    <i class="glyphicon glyphicon-chevron-left" ng-show="isOffcanvasEnabled"></i>
+                    <span ng-show="isOffcanvasEnabled">Hide</span>
+                    <span ng-hide="isOffcanvasEnabled">Show</span>
+                    filters
+                    <i class="glyphicon glyphicon-chevron-right" ng-hide="isOffcanvasEnabled"></i>
+                </button>
+            </p>
+            
+             <div ng-show="submitted && reports.length == 0">
+                <h4>No matching results.</h4>
+            </div>
+            
+             <div class="table-responsive" ng-show="reports.length > 0">
+                <table id="reports-table" class="table table-bordered">
+                    <thead>
+                    <tr>                                
+                        <th>Name of the goalsetter</th>                    
+                       
+                        <th> Score </th>
+                       
+                        
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="Goalsetter in reports | startFrom: pagination.currentPage * pagination.pageSize | limitTo: pagination.pageSize">
+                       
+                        <td>{{Goalsetter.id}}</td>
+                        
+                        <td>{{Goalsetter.averagescore}}</td>
+                        
+                       
+                    </tr>
+                    </tbody>
+                     </table>
+            </div>
+               <ul class="pagination" ng-show="reports.length > 0">
+                <li ng-class="{disabled: pagination.currentPage == 0 }">
+                    <a ng-class="{disabled: pagination.currentPage == 0 }"
+                       ng-click="pagination.isDisabled($event) || (pagination.currentPage = 0)">&lt&lt</a>
+                </li>
+                 <li ng-class="{disabled: pagination.currentPage == 0 }">
+                    <a ng-class="{disabled: pagination.currentPage == 0 }"
+                       ng-click="pagination.isDisabled($event) || (pagination.currentPage = pagination.currentPage - 1)">&lt</a>
+                </li>
+
+                <!-- ng-repeat creates a new scope. Need to specify the pagination.currentPage as $parent.pagination.currentPage -->
+                <li ng-repeat="page in pagination.pageArray()" ng-class="{active: $parent.pagination.currentPage == page}">
+                    <a ng-click="$parent.pagination.currentPage = page">{{page + 1}}</a>
+                </li>
+
+                <li ng-class="{disabled: pagination.currentPage == pagination.numberOfPages() - 1}">
+                    <a ng-class="{disabled: pagination.currentPage == pagination.numberOfPages() - 1}"
+                       ng-click="pagination.isDisabled($event) || (pagination.currentPage = pagination.currentPage + 1)">&gt</a>
+                </li>
+                <li ng-class="{disabled: pagination.currentPage == pagination.numberOfPages() - 1}">
+                    <a ng-class="{disabled: pagination.currentPage == pagination.numberOfPages() - 1}"
+                       ng-click="pagination.isDisabled($event) || (pagination.currentPage = pagination.numberOfPages() - 1)">&gt&gt</a>
+                </li>
+            </ul>
+        </div>
+        
+        
+
+    </div>
+</div>
+
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                
+            </button>
+            <a class="navbar-brand" href="/">Goal Scale</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+               
+                <li ng-class="{ active: isActive('/profile')}" ng-click="collapseNavbar()"><a href="#/profile">My Profile</a></li>
+    
+                  
+                  
+                  <li ng-class="{ active: isActive('/reports')}" ng-click="collapseNavbar()"><a href="#/reports">Reports</a></li>
+                <li class="nav-divider"></li>
+            </ul>
+           <ul class="nav navbar-nav navbar-right">
+               
+                <li ng-class="{ active: isActive('/signout')}" id="signOutLink"  ng-click="signOut()">Sign out</li>
+            </ul> 
+        </div>
+    </div>
+</div>
+        
